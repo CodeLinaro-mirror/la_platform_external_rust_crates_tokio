@@ -7,12 +7,12 @@ name = "tokio"
 #   - README.md
 # - Update CHANGELOG.md.
 # - Create "v1.0.x" git tag.
-version = "1.5.0"
+version = "1.7.1"
 edition = "2018"
 authors = ["Tokio Contributors <team@tokio.rs>"]
 license = "MIT"
 readme = "README.md"
-documentation = "https://docs.rs/tokio/1.5.0/tokio/"
+documentation = "https://docs.rs/tokio/1.7.1/tokio/"
 repository = "https://github.com/tokio-rs/tokio"
 homepage = "https://tokio.rs"
 description = """
@@ -54,6 +54,7 @@ net = [
   "mio/tcp",
   "mio/udp",
   "mio/uds",
+  "winapi/namedpipeapi",
 ]
 process = [
   "bytes",
@@ -115,6 +116,9 @@ version = "0.3.8"
 default-features = false
 optional = true
 
+[target.'cfg(windows)'.dev-dependencies.ntapi]
+version = "0.3.6"
+
 [dev-dependencies]
 tokio-test = { version = "0.4.0", path = "../tokio-test" }
 tokio-stream = { version = "0.1", path = "../tokio-stream" }
@@ -123,6 +127,7 @@ proptest = "1"
 rand = "0.8.0"
 tempfile = "3.1.0"
 async-stream = "0.3"
+socket2 = "0.4"
 
 [target.'cfg(loom)'.dev-dependencies]
 loom = { version = "0.5", features = ["futures", "checkpoint"] }
